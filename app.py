@@ -2,8 +2,11 @@ from flask import Flask, jsonify, request
 import requests
 import urllib.request
 import json
-  
+from decouple import config
+from dotenv import load_dotenv
 
+load_dotenv()
+  
 app = Flask(__name__)
   
 
@@ -24,7 +27,9 @@ def weather():
     #  code
     # );
 
-    response = requests.get('https://app.zipcodebase.com/api/v1/search?apikey=88d3a300-d4e9-11ec-98d4-b191cc8a5707&codes=' + code);
+    SECRET_KEY = config('SECRET_KEY')
+
+    response = requests.get('https://app.zipcodebase.com/api/v1/search?apikey=' + SECRET_KEY + '&codes=' + code);
     info = response.json()
 
     print(info['results'][code][0])

@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 flask = "*"
 requests = "*"
+python-decouple = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
